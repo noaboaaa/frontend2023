@@ -1,0 +1,223 @@
+#main-content {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+#main-content > div {
+    flex: 1; /* Each child div takes equal space */
+    margin: 10px;
+    border: 1px solid #ccc; /* Adjust the border style as you like */
+    padding: 10px;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+/* Optional: Add some padding or margin to the left and right of the sections to create space between them */
+#albums-section, #tracks-section, #artists-section {
+    padding: 10px;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+#search-container {
+    margin-top: 10px;
+}
+
+#main-content {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+#albums-column, #tracks-column, #artists-column {
+    flex-basis: 30%;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.album {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.album img {
+    width: 100%; /* Adjust as needed */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.album h3, .album p {
+    margin: 5px 0;
+}
+
+
+.artist {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center; /* Optional: Center the content */
+}
+
+.artist img {
+    width: 100px; /* Adjust as needed */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.artist h3 {
+    margin: 5px 0;
+}
+
+.track h3 {
+    font-weight: bold;
+}
+
+.track p {
+    font-weight: normal;
+}
+
+.track {
+   border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+
+}
+
+/* Modal base styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4); /* Black with opacity */
+}
+
+/* Modal content box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* 10% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%; /* Could be more or less, depending on preference */
+}
+
+/* Close button */
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Modal Styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto; /* 5% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+/* Form styling inside modals */
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content form label {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.modal-content form input[type="text"],
+.modal-content form input[type="number"],
+.modal-content form input[type="url"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.modal-content form button[type="submit"] {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  padding: 10px 15px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-content form button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* Adjustments for smaller screens */
+@media screen and (max-width: 600px) {
+  .modal-content {
+    width: 90%; /* Full width on smaller screens */
+  }
+}
