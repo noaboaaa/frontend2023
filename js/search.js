@@ -29,7 +29,7 @@ function searchArtists(searchTerm) {
 }
 
 function searchAlbums(searchTerm) {
-  fetch(`http://localhost:4000/albums?q=${encodeURIComponent(searchTerm)}`)
+  fetch(`http://localhost:4000/albums/search?q=${encodeURIComponent(searchTerm)}`)
     .then((response) => response.json())
     .then((albums) => {
       displayAlbums(albums);
@@ -41,7 +41,7 @@ function searchAlbums(searchTerm) {
 
 
 function searchTracks(searchTerm) {
-  fetch(`http://localhost:4000/tracks?q=${encodeURIComponent(searchTerm)}`)
+  fetch(`http://localhost:4000/tracks/search?q=${encodeURIComponent(searchTerm)}`)
     .then((response) => response.json())
     .then((tracks) => {
       displayTracks(tracks);

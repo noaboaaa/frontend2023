@@ -38,7 +38,6 @@ export function displayAlbums(albums) {
 }
 
 
-
 // album modal stuff
 function openModal(albumId) {
   fetch(`http://localhost:4000/albums/${albumId}/tracks`) // Adjust the URL as needed
@@ -132,3 +131,4 @@ export function displayArtists(artists) {
     artistsList.appendChild(artistDiv);
   });
 }
+
