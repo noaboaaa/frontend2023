@@ -1,14 +1,28 @@
 export function loadAlbums() {
-  fetch("http://localhost:4000/albums") // Adjust the URL as needed
+  fetch("https://nkrmusic-backend.azurewebsites.net/albums") 
     .then((response) => response.json())
     .then((albums) => displayAlbums(albums))
     .catch((error) => console.error("Error fetching albums:", error));
 }
 
+export function loadTracks() {
+  fetch("https://nkrmusic-backend.azurewebsites.net/tracks")
+    .then((response) => response.json())
+    .then((tracks) => displayTracks(tracks))
+    .catch((error) => console.error("Error fetching tracks:", error));
+}
+
+export function loadArtists() {
+  fetch("https://nkrmusic-backend.azurewebsites.net/artists")
+    .then((response) => response.json())
+    .then((artists) => displayArtists(artists))
+    .catch((error) => console.error("Error fetching artists:", error));
+}
+
+
 export function displayAlbums(albums) {
-  
   const albumsList = document.getElementById("albums-list");
-  albumsList.innerHTML = ""; // Clear existing content
+  albumsList.innerHTML = "";
 
   albums.forEach((album) => {
     const albumDiv = document.createElement("div");
@@ -25,7 +39,7 @@ export function displayAlbums(albums) {
     image.alt = `Cover of ${album.title}`;
     albumDiv.appendChild(image);
 
-    // Create and append the artist name(s)
+    // Create and append the artist name
     if (album.artistNames) {
       const artists = document.createElement("p");
       artists.textContent = `Artist(s): ${album.artistNames}`;
@@ -38,16 +52,63 @@ export function displayAlbums(albums) {
 }
 
 
+export function displayArtists(artists) {
+  const artistsList = document.getElementById("artists-list");
+  artistsList.innerHTML = "";
+
+  artists.forEach((artist) => {
+    const artistDiv = document.createElement("div");
+    artistDiv.className = "artist"; 
+
+    const image = document.createElement("img");
+    image.src = artist.imageUrl;
+    image.alt = `Image of ${artist.name}`;
+    artistDiv.appendChild(image);
+
+    const name = document.createElement("h3");
+    name.textContent = artist.name; 
+    artistDiv.appendChild(name);
+
+    artistsList.appendChild(artistDiv);
+  });
+}
+
+
+export function displayTracks(tracks) {
+  const tracksList = document.getElementById("tracks-list");
+  tracksList.innerHTML = "";
+
+  tracks.forEach((track) => {
+    const trackDiv = document.createElement("div");
+    trackDiv.className = "track"; 
+
+    const trackName = document.createElement("h3");
+    trackName.textContent = track.trackName; 
+    trackDiv.appendChild(trackName);
+
+    // Display artist names if available
+    if (track.artistNames) {
+      const byArtist = document.createElement("p");
+      byArtist.textContent = `by ${track.artistNames}`;
+      trackDiv.appendChild(byArtist);
+    }
+
+    tracksList.appendChild(trackDiv);
+  });
+}
+
+
+
 // album modal stuff
 function openModal(albumId) {
-  fetch(`http://localhost:4000/albums/${albumId}/tracks`) // Adjust the URL as needed
-    .then((response) => response.json())
+  fetch(`https://nkrmusic-backend.azurewebsites.net/albums/${albumId}/tracks`) 
     .then((tracks) => {
       displayTracksInModal(tracks, albumId);
       document.getElementById("album-modal").style.display = "block";
     })
     .catch((error) => console.error("Error fetching tracks:", error));
 }
+
 
 function displayTracksInModal(tracks, albumId) {
   const modalTrackList = document.getElementById("modal-track-list");
@@ -64,71 +125,13 @@ function displayTracksInModal(tracks, albumId) {
     "modal-album-title"
   ).textContent = `Tracks for Album ID: ${albumId}`;
 }
-// Event listener for closing the modal
-document.querySelector(".close-button").addEventListener("click", () => {
-  document.getElementById("album-modal").style.display = "none";
-});
 
-
-
-// tracks
-
-export function loadTracks() {
-  fetch("http://localhost:4000/tracks") // Adjust the URL to your server
-    .then((response) => response.json())
-    .then((tracks) => displayTracks(tracks))
-    .catch((error) => console.error("Error fetching tracks:", error));
+// Initialize event listeners
+export function initEventListeners() {
+    // Close modal listener
+    document.querySelector(".close-button").addEventListener("click", () => {
+        document.getElementById("album-modal").style.display = "none";
+    });
 }
 
-export function displayTracks(tracks) {
-  const tracksList = document.getElementById("tracks-list");
-  tracksList.innerHTML = "";
-
-  tracks.forEach((track) => {
-    const trackDiv = document.createElement("div");
-    trackDiv.className = "track"; // Add a class for styling
-
-    const trackName = document.createElement("h3");
-    trackName.textContent = track.trackName; // Display track name
-    trackDiv.appendChild(trackName);
-
-    // Display artist names if available
-    if (track.artistNames) {
-      const byArtist = document.createElement("p");
-      byArtist.textContent = `by ${track.artistNames}`;
-      trackDiv.appendChild(byArtist);
-    }
-
-    tracksList.appendChild(trackDiv);
-  });
-}
-
-// artists
-export function loadArtists() {
-  fetch("http://localhost:4000/artists") // Adjust the URL as needed
-    .then((response) => response.json())
-    .then((artists) => displayArtists(artists))
-    .catch((error) => console.error("Error fetching artists:", error));
-}
-
-export function displayArtists(artists) {
-  const artistsList = document.getElementById("artists-list");
-  artistsList.innerHTML = "";
-
-  artists.forEach((artist) => {
-    const artistDiv = document.createElement("div");
-    artistDiv.className = "artist"; // Add a class for styling
-
-    const image = document.createElement("img");
-    image.src = artist.imageUrl;
-    image.alt = `Image of ${artist.name}`;
-    artistDiv.appendChild(image);
-
-    const name = document.createElement("h3");
-    name.textContent = artist.name; // Display artist name
-    artistDiv.appendChild(name);
-
-    artistsList.appendChild(artistDiv);
-  });
-}
 

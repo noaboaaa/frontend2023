@@ -53,7 +53,7 @@ function handleAddTrackFormSubmission(event) {
     duration: trackDuration,
   };
 
-  fetch("http://localhost:4000/tracks", {
+  fetch("https://nkrmusic-backend.azurewebsites.net/tracks", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -91,7 +91,7 @@ export function initFormEventListeners() {
       handleFormSubmission(
         e,
         "add-artist-modal",
-        "http://localhost:4000/artists",
+        "https://nkrmusic-backend.azurewebsites.net/artists",
         loadArtists
       )
     );
@@ -109,7 +109,7 @@ export function initFormEventListeners() {
       handleFormSubmission(
         e,
         "add-album-modal",
-        "http://localhost:4000/albums",
+        "https://nkrmusic-backend.azurewebsites.net/albums",
         loadAlbums
       )
     );

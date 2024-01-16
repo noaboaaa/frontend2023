@@ -1,4 +1,4 @@
-import { loadAlbums, loadTracks, loadArtists } from "./data.js";
+import { loadAlbums, loadTracks, loadArtists, initEventListeners } from "./data.js";
 import { performSearch } from "./search.js";
 import { initFormEventListeners } from "./forms.js";
 
@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadTracks();
   loadArtists();
    initFormEventListeners();
+   initEventListeners();
 });
 
 
