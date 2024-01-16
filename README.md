@@ -6,6 +6,8 @@
 
 **Frontend Repository:** https://github.com/noaboaaa/frontend2023
 
+https://nkrmusic-backend.azurewebsites.net/
+https://nkrmusic-frontend.azurewebsites.net/
  
 **Clone the Frontend Repository**
 
